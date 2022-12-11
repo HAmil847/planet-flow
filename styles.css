@@ -1,0 +1,208 @@
+:not(:defined) > * {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+:root {
+  --box-width: 100px;
+  --box-height: 80px;
+  --box-radius: 0.8rem;
+}
+.media {
+  position: absolute;
+  filter: drop-shadow(0 0 2px yellow);
+  height: 150px;
+  width: 180px;
+  object-fit: cover;
+  top: 5px;
+  transform: translate(-50%, -50%);
+  animation: triangle 1s cubic-bezier(0.96,-0.23, 1, 1);
+}
+@keyframes slide-in-elliptic-top-bck {
+  0% {
+    transform: translateY(-600px) rotateX(30deg) scale(6.5);
+    transform-origin: 50% 200%;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotateX(0) scale(1);
+    transform-origin: 50% -500px;
+    opacity: 1;
+  }
+}
+
+.Hotspot {
+  background-color: unset;
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--box-radius);
+  cursor: pointer;
+  height: var(--box-height);
+  width: var(--box-width);
+  padding: 8px;
+  position: relative;
+  top: -50px;
+  transition: opacity 0.3s;
+}
+
+.Hotspot:not([data-visible]) {
+  background: transparent;
+  box-shadow: none;
+  height: 32px;
+  pointer-events: none;
+  width: 32px;
+}
+
+.Hotspot:focus {
+  border: 4px solid rgb(0, 128, 200);
+  height: 32px;
+  width: 32px;
+}
+
+.Hotspot > * {
+  opacity: 1;
+  /*transform: translateY(-50%);*/
+}
+
+.HotspotAnnotation {
+  color: rgba(0, 0, 0, 0.8);
+  display: block;
+  font-family: Futura, Helvetica Neue, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  left: calc(100% + 1em);
+  max-width: 128px;
+  overflow-wrap: break-word;
+  padding: 0.5em 1em;
+  position: absolute;
+  top: 50%;
+  width: max-content;
+}
+
+.Hotspot:not([data-visible]) > * {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(-50% + 4px));
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.progress-bar {
+  display: block;
+  width: 33%;
+  height: 10%;
+  max-height: 2%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 25px;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5),
+    0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar.hide {
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.update-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 0%;
+  height: 100%;
+  border-radius: 25px;
+  float: left;
+  transition: width 0.3s;
+}
+
+#ar-button {
+  background-image: url(ar_icon.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 16px;
+  padding: 0px 16px 0px 40px;
+  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color: #4285f4;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #dadce0;
+}
+
+#ar-button:active {
+  background-color: #e8eaed;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes elongate {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+}
+
+@keyframes triangle{
+  0%{
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
+    filter: drop-shadow(0 0 2px yellow);
+
+  }
+  100%{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    filter: drop-shadow(0 0 2px yellow);
+
+  }
+}

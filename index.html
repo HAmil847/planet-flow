@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="&lt;model-viewer&gt; template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" href="./styles.css" rel="stylesheet" />
+    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script
+      src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer
+      id="scene"
+      src="planet.glb"
+      poster="poster.webp"
+      shadow-intensity="1"
+      min-field-of-view="4deg"
+      camera-orbit="0deg 75deg 32.56m"
+      field-of-view="4deg"
+      disable-zoom
+      disable-tap
+    >
+      <button
+        class="Hotspot"
+        slot="hotspot-1"
+        data-position="6.111220883077751m 1.0141507276437047m 2.872170735322601m"
+        data-normal="-0.496609006430745m 0.17951500628021955m 0.8492077821429105m"
+        data-visibility-attribute="visible"
+        data-target="6m 0.5m 0.7m"
+        data-orbit="0deg 75deg 35.41m"
+      >
+        <video src="demo.mp4" class="media" autoplay muted loop></video></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-2"
+        data-position="3.060541544848697m 0.9981247273650514m 1.1218905148693845m"
+        data-normal="-0.496609006430745m 0.17951500628021955m 0.8492077821429105m"
+        data-visibility-attribute="visible"
+        data-target="3m 0.5m, 0.9m"
+        data-orbit="0deg 75deg 36.98m"
+      >
+        <video src="demo.mp4" class="media" autoplay muted loop></video></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-3"
+        data-position="0.052372807236585835m 0.9601806152305024m 0.6499974901573758m"
+        data-normal="-0.4966090064307452m 0.17951500628021955m 0.8492077821429106m"
+        data-visibility-attribute="visible"
+        data-target="0.05m, 0.54m, -0.98m"
+        data-orbit="0deg 75deg 37.04m"
+      >
+        <video src="demo.mp4" class="media" autoplay muted loop></video></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-4"
+        data-position="-1.5965313131861258m 1.0068050158826976m 2.6103520772756115m"
+        data-normal="-0.496609006430745m 0.17951500628021955m 0.8492077821429105m"
+        data-visibility-attribute="visible"
+        data-target="-1.6m, 0.5m, 0.5m"
+        data-orbit="0deg 75deg 35.6m"
+      >
+        <video src="demo.mp4" class="media"  autoplay muted loop></video></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-5"
+        data-position="-4.208204579124039m 0.9672681880530085m 1.0610204016651203m"
+        data-normal="0.9734298148376145m 0.22898557942631945m 2.0312774189613575e-8m"
+        data-visibility-attribute="visible"
+        data-target="-4.23m, 1m, 1.07m"
+        data-orbit="0deg 75deg 31.64m"
+      >
+        <video src="demo.mp4" class="media" autoplay muted loop></video></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-6"
+        data-position="-7.601767928357678m 1.0062385278728527m 2.7779551083942797m"
+        data-normal="-0.496609006430745m 0.17951500628021955m 0.8492077821429105m"
+        data-visibility-attribute="visible"
+        data-target="-7.6m, 1.3m, 2.77m"
+        data-orbit="0deg 75deg 31.64m"
+      >
+        <video src="demo.mp4" class="media" autoplay muted loop></video>
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">View in your space</button>
+      <div id="ar-prompt">
+        <img src="ar_hand_prompt.png" />
+      </div>
+    </model-viewer>
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </body>
+</html>
