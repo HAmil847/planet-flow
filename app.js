@@ -1,7 +1,7 @@
 const scene = document.getElementById("scene"); //this is the main scene
 const hotspot = scene.getElementsByClassName("Hotspot"); //this is the array of the elements (piramides)
 const scrollSensitive = 0.008; //this is the sensibility of the scrolling
-const scrollMovilSensitive = 0.03; //this is the sensibility of the scrolling
+const scrollMovilSensitive = 0.08; //this is the sensibility of the scrolling
 
 let scrollScore = 0; //the actual level(pramide)
 let lastY;
