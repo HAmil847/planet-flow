@@ -10,8 +10,9 @@ body {
 }
 
 model-viewer {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  margin: auto;
   background-color: #ffffff;
 }
 :root {
@@ -19,15 +20,22 @@ model-viewer {
   --box-height: 80px;
   --box-radius: 0.8rem;
 }
-.media {
+#visor {
   position: absolute;
-  filter: drop-shadow(0 0 2px yellow);
-  height: 150px;
-  width: 180px;
-  object-fit: cover;
-  top: 5px;
+  background-color: white;
+  top: 20%;
+  left: 51.5%;
   transform: translate(-50%, -50%);
-  animation: triangle 1s cubic-bezier(0.96,-0.23, 1, 1);
+  transition: left 1.9s, top 1.9s;
+  animation: triangle 1.3s cubic-bezier(1, -0.06, 1, 0.31);;
+  z-index: 100;
+  background-image: url(demo.mp4);
+}
+#visor-video{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  filter: drop-shadow(0 0 4px yellow);
 }
 @keyframes slide-in-elliptic-top-bck {
   0% {
@@ -43,21 +51,22 @@ model-viewer {
 }
 
 .Hotspot {
-  background-color: unset;
+  background: #fff;
+  border-radius: 32px;
+  border: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
-  border: none;
-  border-radius: var(--box-radius);
   cursor: pointer;
-  height: var(--box-height);
-  width: var(--box-width);
+  height: 24px;
   padding: 8px;
   position: relative;
-  top: -50px;
   transition: opacity 0.3s;
+  width: 24px;
 }
 
 .Hotspot:not([data-visible]) {
   background: transparent;
+  border: 4px solid #fff;
   box-shadow: none;
   height: 32px;
   pointer-events: none;
@@ -67,15 +76,19 @@ model-viewer {
 .Hotspot:focus {
   border: 4px solid rgb(0, 128, 200);
   height: 32px;
+  outline: none;
   width: 32px;
 }
 
 .Hotspot > * {
   opacity: 1;
-  /*transform: translateY(-50%);*/
+  transform: translateY(-50%);
 }
 
-.HotspotAnnotation {
+.HotspotAnnotation{
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   color: rgba(0, 0, 0, 0.8);
   display: block;
   font-family: Futura, Helvetica Neue, sans-serif;
@@ -196,13 +209,10 @@ model-viewer > #ar-prompt > img {
 
 @keyframes triangle{
   0%{
-    clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
-    filter: drop-shadow(0 0 2px yellow);
-
+    clip-path: polygon(0 0, 100% 0, 49% 100%, 49% 100%);
+      
   }
   100%{
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    filter: drop-shadow(0 0 2px yellow);
-
   }
 }
