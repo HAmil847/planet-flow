@@ -1,7 +1,11 @@
 const scene = document.getElementById("scene"); //this is the main scene
 const hotspot = scene.getElementsByClassName("Hotspot"); //this is the array of the elements (piramides)
 const scrollSensitive = 0.008; //this is the sensibility of the scrolling
+const scrollMovilSensitive = 0.03; //this is the sensibility of the scrolling
+
 let scrollScore = 0; //the actual level(pramide)
+let lastY;
+let temp=0;
 let currentElement = scrollScore; //aux var
 const currentMedia = document.getElementById("visor"); //the visor
 const video = document.getElementById("visor-video"); //the visor
@@ -11,7 +15,7 @@ const video = document.getElementById("visor-video"); //the visor
 scene.interpolationDecay = "150"; //set the  velocity of change of the view
 video.src ="video(3).mp4";
 
-//scrolling score increment
+//scrolling score increment PC
 const scrolling = function (event) {
   let amount = event.deltaY;
   amount = amount * scrollSensitive;
@@ -20,6 +24,23 @@ const scrolling = function (event) {
   console.log(scrollScore);
   changeView();
 };
+
+//scrolling score increment MOVIL
+const scrolliMovil = function (event) {
+  let amount=0;
+  var currentY = event.touches[0].clientY;
+  if(currentY > lastY){
+    --amount;
+  }else if(currentY < lastY){
+    ++amount;
+  }
+  lastY = currentY;
+  temp += amount*scrollMovilSensitive;
+  scrollScore =Math.round(temp);
+  console.log(scrollScore);
+  changeView();
+};
+
 //move to the next model (piramide)
 const changeView = () => {
   //get the camera coordinates
@@ -105,3 +126,4 @@ function anim() {
 //listener here
 window.addEventListener("wheel", scrolling);
 window.addEventListener("click", changeView);
+window.addEventListener("touchmove", scrolliMovil);
