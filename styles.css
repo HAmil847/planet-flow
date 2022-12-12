@@ -7,14 +7,15 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 model-viewer {
+  pointer-events: all;
   width: 90%;
   height: 90%;
   margin: auto;
   background-color: #ffffff;
-  overflow-y: hidden;
 }
 :root {
   --box-width: 100px;
