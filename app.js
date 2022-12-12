@@ -9,7 +9,7 @@ const video = document.getElementById("visor-video"); //the visor
 //set default
 
 scene.interpolationDecay = "150"; //set the  velocity of change of the view
-video.src ="video(2).mp4";
+video.src ="video(3).mp4";
 
 //scrolling score increment
 const scrolling = function (event) {
@@ -64,32 +64,32 @@ function anim() {
         currentMedia.style.left="51.5%";
 
         //the video 
-        video.src ="video(1).mp4";
+        video.src ="video(2).mp4";
         break;
       case 2: 
         currentMedia.style.top="18%";
         currentMedia.style.left="50%";
 
         //the video 
-        video.src ="video(2).mp4";
+        video.src ="video(3).mp4";
         break;
       case 3:
         currentMedia.style.top="40%";
 
         //the video 
-        video.src ="video(3).mp4";
+        video.src ="video(4).mp4";
         break;
       case 4:
         currentMedia.style.top="20%";
 
         //the video 
-        video.src ="video(4).mp4";
+        video.src ="video(5).mp4";
         break;
       case 5:
         currentMedia.style.top="40%";
 
         //the video 
-        video.src ="video(5).mp4";
+        video.src ="video(6).mp4";
         break;
       default:
         currentMedia.style.top="20%";
